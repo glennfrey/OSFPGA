@@ -72,8 +72,31 @@ Co-founder of VLSI System Design (VSD) Corporation Private Limited
 ![](fpgaday1/fpgaday1vioioplanning.png)
 ![](fpgaday1/fpgaday1viobitstream.png)
 
+## Day OpenFPGA2
+## Part 1: OpenFPGA Intro
 
 
 
+## Part 2: VPR
+![](fpgaday2/fpgaday2vprcommand.png)
+![](fpgaday2/fpgaday2vprdisplay.png)
+![](fpgaday2/fpgaday2vprblockselected.png)
+![](fpgaday2/fpgaday2vprtogglenetsnets.png)
+![](fpgaday2/fpgaday2vprtogglenetslogicalconnections.png)
+![](fpgaday2/fpgaday2vprproceedplacement.png)
+![](fpgaday2/fpgaday2vprproceedplacementdisplay.png)
+![](fpgaday2/fpgaday2vprproceedroutingdisplay.png)
+![](fpgaday2/fpgaday2vprproceedroutingdisplayrrcongested.png)
+![](fpgaday2/fpgaday2vprproceedroutingdisplaycritpath.png)
+![](fpgaday2/fpgaday2vprproceedroutingdisplayroutingutil.png)
+![](fpgaday2/fpgaday2vprproceedroutingdisplayblkinternal.png)
+![](fpgaday2/fpgaday2vprproceedroutingdisplaynetpackplacegenerated.png)
+![](fpgaday2/fpgaday2vprreport.png)
+![](fpgaday2/fpgaday2vprslackreportnoconstraint.png)
+![](fpgaday2/fpgaday2vprslackreportcosntraintfle.png)
+![](fpgaday2/fpgaday2vprslackreportcosntraint.png)
+## Part 3: VTR
+
+![](fpgaday2/fpgaday2vprcounterv.png)
 
 
