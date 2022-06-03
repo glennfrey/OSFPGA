@@ -98,5 +98,29 @@ Co-founder of VLSI System Design (VSD) Corporation Private Limited
 ## Part 3: VTR
 
 ![](fpgaday2/fpgaday2vprcounterv.png)
+![](fpgaday2/fpgaday2vprcounterblif.png)
+![](fpgaday2/fpgaday2vprcounterblifdisplay.png)
+![](fpgaday2/fpgaday2vprcounterblifdisplaylogicalcon.png)
+![](fpgaday2/fpgaday2vprcounterblifdisplaycritpath.png)
+![](fpgaday2/fpgaday2vprcounterblifdisplaynoanalysis.png)
+![](fpgaday2/fpgaday2vprcounterblifdisplayplacementcomplete.png)
+![](fpgaday2/fpgaday2vprcounterblifdisplaytogglerr.png)
+![](fpgaday2/fpgaday2vprcounterblifdisplayroutingcomplete.png)
+![](fpgaday2/fpgaday2vprcounterblifpostsynthesis.png)
+![](fpgaday2/fpgaday2vprcounterblifpostsynthesisvfile.png)
+![](fpgaday2/fpgaday2vprcounterblifprimitivesntestbench.png)
+![](fpgaday2/fpgaday2vprcounterblifvivadopostsimulation.png)
+![](fpgaday2/fpgaday2vprcounterblifvivadosources.png)
+![](fpgaday2/fpgaday2vprcounterblifvivadoeditcounter.png)
+![](fpgaday2/fpgaday2vprcounterblifvivadosimulation.png)
+![](fpgaday2/fpgaday2vprcounteprevprblif.png)
+![](fpgaday2/fpgaday2vprcounteprevprblifedited.png)
+![](fpgaday2/fpgaday2vprcounteprevprblifcomman.png)
+![](fpgaday2/fpgaday2vprcounteprevprblifcommandsucceeded.png)
+![](fpgaday2/fpgaday2vprcounteprevprblifreportslack.png)
+![](fpgaday2/fpgaday2vprcounteprevprbliflogblocks.png)
+![](fpgaday2/fpgaday2vprcounteprevprblifloglogicelement.png)
+![](fpgaday2/fpgaday2vprcounteprevprbliflogdetail.png)
+
 
 
