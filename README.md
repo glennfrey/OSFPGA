@@ -121,6 +121,30 @@ Co-founder of VLSI System Design (VSD) Corporation Private Limited
 ![](fpgaday2/fpgaday2vprcounteprevprbliflogblocks.png)
 ![](fpgaday2/fpgaday2vprcounteprevprblifloglogicelement.png)
 ![](fpgaday2/fpgaday2vprcounteprevprbliflogdetail.png)
+![](fpgaday2/fpgaday2vprcounteprevprblifpower.png)
+![](fpgaday2/fpgaday2vprcounteprevprblifcounterpwr.png)
+![](fpgaday2/fpgaday2vprcounteprevprblifcounterpwr2.png)
+## Day 3 Introduction to RISC-V core programming on Vivado
+## Part 1: RVMyth vivado rtl-to-synthesis
+![](fpgaday3/fpgaday3testedit.png)
+![](fpgaday3/fpgaday3riscvwaveform.png)
+![](fpgaday3/fpgaday3riscvwithILA.png)
+![](fpgaday3/fpgaday3riscvwithILAelaboraiton.png)
+![](fpgaday3/fpgaday3riscvwithILAconstraints.png)
+![](fpgaday3/fpgaday3riscvwithILAutilazationrptt.png)
+![](fpgaday3/fpgaday3riscvwithILAsummary.png)
+![](fpgaday3/fpgaday3riscvwithILschematic.png)
+![](fpgaday3/fpgaday3riscvwithILfloorplan.png)
+![](fpgaday3/fpgaday3riscvwithILfloorplan0.png)
+![](fpgaday3/fpgaday3riscvwithILfloorplanhighlightnets.png)
+![](fpgaday3/fpgaday3riscvwithILtimingsummary.png)
+![](fpgaday3/fpgaday3riscvwithILwirtebitstreamnotarget.png)
 
 
+
+## Part 2: RVMyth Vivado synthesis-to-bitstream
+
+## Day 4 Introduction to SOFA FPGA Fabric IP
+## Part 1: SOFA counter area]
+## Part 2: SOFA counter timing]
 
