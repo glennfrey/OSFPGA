@@ -1,5 +1,5 @@
-# OSFPGA
-Open Source FPGA
+# FPGA - Fabric, Design and Architecture
+FPGA - Fabric, Design and Architecture
 
 ![](risc-v/risc-v_banner.png)
 ### ABOUT THE WORKSHOP
