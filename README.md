@@ -37,9 +37,45 @@ Co-founder of VLSI System Design (VSD) Corporation Private Limited
   
 ## Day1-Intro
 ## FPGA introduction
+History of programmable logic
+● Programmable logic devices:
+– PLA – Programmable logic arrays
+– CPLD – Complex programmable logic device
+– FPGA
+– Generate customisable hardware
+– Study the effect of area, speed, power of the digital
+circuits
+What is an FPGA?
+● A “field programmable” gate array: Integrated
+circuit designed to be configured by a designer
+● FPGA configuration is specified using HDL
+similar to an ASIC (application specific
+Integrated circuit)
+● Logic design in FPGA is different
+– Uses LUTs, Flip-flops, configurable logic
+blocks
+ASIC(Application Specific Integrated Circuit) is designed from RTL to layout. Layout must be sent to semiconductor foundary for fabrication. ASIC cannot be reprogrammed.
+FPGA (Field Programmable Gate Array) is designed from RTL to bitstream. Design programmed on the FPGA which is bought off-the-shelf. FPGA can be re-programmed.
 
+Applications
+● Hardware acceleration
+● Signal processing
+● Device controllers
+● Embedded systems
+● Aerospace
+● High performance computing
+● Machine learning
 
-
+FPGA Architecture
+Configurable logic blocks (CLB)-- Implement combinatorial and
+sequential logic. Based on LUT and Flip-flop/latches
+Look-up Tables (LUT) which implement the logic functions- truth
+table
+- Carry and Control Logic- Implements arithmetic operations
+- Flip Flops (FFs)/ Latches
+- Memory Elements
+- Programmable I/O blocks - Configurable I/Os for external interface connections
+- Programmable interconnect- Wires to connect inputs, CLBs
 
 
 
@@ -68,16 +104,70 @@ Co-founder of VLSI System Design (VSD) Corporation Private Limited
 ![](fpgaday1/fpgaday1openhardwaremngrautoconnect.png)
 
 ## VIO Counter
+
+Different ways of programming
+● Local programing on the Basys3 board
+● Remote programing
+– Inputs through Virtual Input/Output and Outputs observed on the board
+– Inputs through Virtual Input/Output and Outputs observed on the Integrated Logic Analyzer (ILA)
 ![](fpgaday1/fpgaday1ipcatalogvio.png)
 ![](fpgaday1/fpgaday1vioioplanning.png)
 ![](fpgaday1/fpgaday1viobitstream.png)
 
 ## Day OpenFPGA2
 ## Part 1: OpenFPGA Intro
-
-
+OpenFPGA
+● Current methodologies to produce an FPGA involve several hardware and software engineers and development for several months
+● How do we improve the design/development times?
+● OpenFPGA: Open source framework which can be used to quickly generate a fabric for a custom FPGA (specific to your design)
+– Automation techniques used
+– Reduces FPGA development cycle of a new FPGA to a few days
+– Provides open source design tools
+OpenFPGA
+● Need for custom FPGAs?
+– Accelerate domain-specific applications: FPGA architectures have to be custom made, to provide maximum computing. Prototyping and producing a custom FPGA is costly and time-consuming
+● Customise your own FPGA fabric using a set of templates (> 20 FPGA architectures- in xml files optimised for different applications)
+● Generates Verilog netlists describing an FPGA fabric based on an XMLbased description file: VPR’s (Versatile Place and Route) architecture description language
+● Allows you to write your own FPGA fabric (for a specific application) using OpenFPGA’s architecture description language
+● Automatically generates Verilog testbenches to validate the correctness of FPGA fabric
+● Bitstream generation support based on the same XML-based description file 
+Running the tool
+● VTR:
+– https://docs.verilogtorouting.org/en/latest/quickstart/
+● Build OpenFPGA (done on cloud)
+● Build VTR (done on cloud)
+● Run VPR on a Pre-Synthesized Circuit
+– Observe the result files
+– Visualize (GUI) circuit implementation
+● Run the entire VTR flow automatically
+– Implement our own circuit (blink.v and counter.v) on a pre-existing
+FPGA architecture Earch.xml (VTR_ROOT/vtr_flow/arch)
+– Use an automated approach (Odin II and ABC are automatically run)
+– Perform timing simulation on the generated fabric
 
 ## Part 2: VPR
+Run VPR on a Pre-Synthesized Circuit
+● Run VPR on a Pre-Synthesized Circuit
+https://docs.verilogtorouting.org/en/latest/vpr/
+– Packing (combines primitives into complex blocks)
+– Placement (places complex blocks within the FPGA grid)
+– Routing (determines interconnections between blocks)
+– Analysis (analyzes the implementation)
+● Input: Blif file, Earch
+● Command:> $VTR_ROOT/vpr/vpr \
+ $VTR_ROOT/vtr_flow/arch/timing/EArch.xml \
+ $VTR_ROOT/vtr_flow/benchmarks/blif/tseng.blif \ --
+route_chan_width 100
+Run VPR on a Pre-Synthesized Circuit
+● BLIF Netlist (.blif)
+– https://docs.verilogtorouting.org/en/latest/vpr/file_formats/
+– The technology mapped circuit to be implement
+on the target FPGA is specified as a Berkely
+Logic Interchange Format (BLIF) netlist.
+– The netlist must be flattened and consist of only
+primitives (e.g. .names, .latch, .subckt)
+– Clock and delay constraints can be specified
+with an SDC File.
 ![](fpgaday2/fpgaday2vprcommand.png)
 ![](fpgaday2/fpgaday2vprdisplay.png)
 ![](fpgaday2/fpgaday2vprblockselected.png)
