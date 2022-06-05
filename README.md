@@ -1,7 +1,7 @@
 # FPGA - Fabric, Design and Architecture
 FPGA - Fabric, Design and Architecture
 
-![](risc-v/risc-v_banner.png)
+![](bannerfpga.png)
 ### ABOUT THE WORKSHOP
 The Workshop is a 5-day basic to advance program that is design for fresher and professional who wants to build a career in VLSI industry. It is a cloud based workshop that comprises of training courses that covers RISC-V specs, RISC-V software, How to implement RISC-V basic specs using TL-Verilog and Simulate your own RISC-V core. In short, you are going to write RTL and build RISC-V core on your own.
 ### AUTHOR OF THE WORKSHOP
