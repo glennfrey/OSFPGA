@@ -131,6 +131,7 @@ Co-founder of VLSI System Design (VSD) Corporation Private Limited
 ![](fpgaday3/fpgaday3riscvwithILA.png)
 ![](fpgaday3/fpgaday3riscvwithILAelaboraiton.png)
 ![](fpgaday3/fpgaday3riscvwithILAconstraints.png)
+## Part 2: RVMyth Vivado synthesis-to-bitstream
 ![](fpgaday3/fpgaday3riscvwithILAutilazationrptt.png)
 ![](fpgaday3/fpgaday3riscvwithILAsummary.png)
 ![](fpgaday3/fpgaday3riscvwithILschematic.png)
@@ -141,10 +142,44 @@ Co-founder of VLSI System Design (VSD) Corporation Private Limited
 ![](fpgaday3/fpgaday3riscvwithILwirtebitstreamnotarget.png)
 
 
-
-## Part 2: RVMyth Vivado synthesis-to-bitstream
-
 ## Day 4 Introduction to SOFA FPGA Fabric IP
-## Part 1: SOFA counter area]
-## Part 2: SOFA counter timing]
+## Part1 SOFA counter area]
+![](fpgaday4/fpgaday4configlocation.png)
+![](fpgaday4/fpgaday4generatetestbenchfpg.png)
+![](fpgaday4/fpgaday4generatetestbenchfpgainside.png)
+![](fpgaday4/fpgaday4vprarchi.png)
+![](fpgaday4/fpgaday4vmakefile.png)
+![](fpgaday4/fpgaday4vlogfiles.png)
+![](fpgaday4/fpgaday4vlogopenshellfpga.png)
+![](fpgaday4/fpgaday4vlogvprstd.png)
+## Part2 SOFA counter timing]
+![](fpgaday4/fpgaday4vlogvprstdareareport.png)
+![](fpgaday4/fpgaday4vlogvprstdareareport2.png)
+![](fpgaday4/fpgaday4countersdc.png)
+![](fpgaday4/fpgaday4changegeneratetestbenchfpga.png)
+![](fpgaday4/fpgaday4changegeneratetestbenchfpgaedit.png)
+![](fpgaday4/fpgaday4changegeneratetestbenchfpgaeditlog.png)
+![](fpgaday4/fpgaday4changegeneratetestbenchfpgaeditreport.png)
+![](fpgaday4new/fpgaday4upcounterconfedit.png)
+![](fpgaday4new/fpgaday4upcountergeneratetestbenchfpga.png)
+![](fpgaday4new/fpgaday4upcountersetupsimulationreport.png)
+![](fpgaday4new/fpgaday4upcounterholdsimulationreport.png)
+## Part3 SOFA counter post impl
+![](fpgaday4new/fpgaday4postupcountergeneratetbfpga.png)
+![](fpgaday4new/fpgaday4postupcounterfile.png)
+![](fpgaday4new/fpgaday4postupcounterfileclock.png)
+![](fpgaday4new/fpgaday4postupcounterfilegenerated.png)
+![](fpgaday4new/fpgaday4postsimulationupcounter.png)
+![](fpgaday4new/fpgaday4postsimulationupcountertbcod.png)
+![](fpgaday4new/fpgaday4postsimulationupcounterprimitivescode.png)
+![](fpgaday4new/fpgaday4postsimulationupcounterresult.png)
+![](fpgaday4new/fpgaday4upcounterraceact.png)
+## Part4 counter power
+![](fpgaday4new/fpgaday4vprpowergeneratetestbenchfpgaedit.png)
+![](fpgaday4new/fpgaday4vprarchxmlfilescodeaddedforpoweranalysis.png)
+![](fpgaday4new/fpgaday4poweranalysistasksimulation.png)
+![](fpgaday4new/fpgaday4poweranalysisbreakdown.png)
+![](fpgaday4new/fpgaday4poweranalysisbreakdown2.png)
+
+
 
