@@ -271,5 +271,8 @@ with an SDC File.
 ![](fpgaday4new/fpgaday4poweranalysisbreakdown.png)
 ![](fpgaday4new/fpgaday4poweranalysisbreakdown2.png)
 
-
-
+## Day 5 RISC-V core on custom SOFA fabric
+## Part1 SOFA-RVMyth run
+## Part2 SOFA-RVMyth timing and area
+## Part3 RVMyth-post impl netlist
+## Part4 SOFA-RVMyth Vivado simulation
