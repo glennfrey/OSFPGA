@@ -273,6 +273,32 @@ with an SDC File.
 
 ## Day 5 RISC-V core on custom SOFA fabric
 ## Part1 SOFA-RVMyth run
+![](fpgaday5/fpgaday5rvmythgeneratetbfpga.png)
+![](fpgaday5/fpgaday5simulationconf.png)
+![](fpgaday5/fpgaday5rvmythvprarchedited.png)
+![](fpgaday5/fpgaday51stcommandopenfpgashelllog.png)
+![](fpgaday5/fpgaday51stcommandvprstdoutlog.png)
 ## Part2 SOFA-RVMyth timing and area
+![](fpgaday5/fpgaday51stcommandvprstdoutlogcrctstat.png)
+![](fpgaday5/fpgaday51stcommandvprstdoutloglogicelements.png)
+![](fpgaday5/fpgaday5timinganalysissdcadditioningeneratetbfpga.png)
+![](fpgaday5/fpgaday5timinganalysissetupreport.png)
+![](fpgaday5/fpgaday5timinganalysholdreport.png)
+![](fpgaday5/fpgaday5timinganalysopenshellfpga.png)
+![](fpgaday5/fpgaday5timinganalysvprstdoutlog.png)
+
+
 ## Part3 RVMyth-post impl netlist
+![](fpgaday5/fpgaday5corepostsynthesisgenerated.png)
+![](fpgaday5/fpgaday5corepostsynthesiscode.png)
+![](fpgaday5/fpgaday5corepostsynthesiscodeclock.png)
+
 ## Part4 SOFA-RVMyth Vivado simulation
+![](fpgaday5/fpgaday5testv.png)
+![](fpgaday5/fpgaday5primitives.png)
+![](fpgaday5/fpgaday5vivadowithfiles.png)
+![](fpgaday5/fpgaday5vivadosimulation.png)
+![](fpgaday5/fpgaday5vivadosimulation2.png)
+![](fpgaday5/fpgaday5vivadoomplementation.png)
+![](fpgaday5/fpgaday5poweranalysis.png)
+![](fpgaday5/fpgaday5poweranalysisaddlinesvpr_archxml.png)
