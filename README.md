@@ -273,9 +273,9 @@ with an SDC File.
 
 ## Day 5 RISC-V core on custom SOFA fabric
 ## Part1 SOFA-RVMyth run
-![](fpgaday5/fpgaday5rvmythgeneratetbfpga.png)
-![](fpgaday5/fpgaday5simulationconf.png)
-![](fpgaday5/fpgaday5rvmythvprarchedited.png)
+![](fpgaday5rvmythgeneratetbfpga.png)
+![](fpgaday5simulationconf.png)
+![](fpgaday5rvmythvprarchedited.png)
 ![](fpgaday5/fpgaday51stcommandopenfpgashelllog.png)
 ![](fpgaday5/fpgaday51stcommandvprstdoutlog.png)
 ## Part2 SOFA-RVMyth timing and area
