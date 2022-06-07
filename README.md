@@ -310,32 +310,79 @@ This is the information inside openshellfpga.log. It also log the errors. In thi
 Another log file that is very important in debugging is the vprstd.log file. Below is the portion of the log that it has.
 ![](fpgaday4/fpgaday4vlogvprstd.png)
 ## Part2 SOFA counter timing]
+In the vprstd.log file we can see the circuit statistics. In it is the number of blocks, nets and netlist blocks.
 ![](fpgaday4/fpgaday4vlogvprstdareareport.png)
+You can also find the logic elements and the Pb types it use.
 ![](fpgaday4/fpgaday4vlogvprstdareareport2.png)
+To generate timing report we need to add sdc file as shown in the BENCHMARK folder.
 ![](fpgaday4/fpgaday4countersdc.png)
+I then open generatetestbench.openfpga.
 ![](fpgaday4/fpgaday4changegeneratetestbenchfpga.png)
+Then input the following commands 
+```
+vpr ${VPR_ARCH_FILE} ${VPR_TESTBENCH_BLIF} --clock_modeling ideal --device ${OPENFPGA_VPR_DEVICE_LAYOUT} --route_chan_width ${OPENFPGA_VPR_ROUTE_CHAN_WIDTH} --absorb_buffer_luts off --sdc_file /home/gfreyolamit/day4/SOFA/FPGA1212_QLSOFA_HD_PNR/FPGA1212_QLSOFA_HD_task/BENCHMARK/counter.sdc
+```
 ![](fpgaday4/fpgaday4changegeneratetestbenchfpgaedit.png)
+After running the openFPGA again. A log and report files has been generated. 
 ![](fpgaday4/fpgaday4changegeneratetestbenchfpgaeditlog.png)
+However I made a mistake here since I did not use the upcounter.v instead I use counter.v which is wrong. That is why I got a slack violation because I use the wrong file which requires longer time required.
 ![](fpgaday4/fpgaday4changegeneratetestbenchfpgaeditreport.png)
+After editing and copying the upcounter.v file in the BENCHMARK folder I also updated the corresponding config file parameters as shown.
 ![](fpgaday4new/fpgaday4upcounterconfedit.png)
+I also updated the generate_testbench.openfpga file as shown.
 ![](fpgaday4new/fpgaday4upcountergeneratetestbenchfpga.png)
+I then open the setup report and get a positive slack.
 ![](fpgaday4new/fpgaday4upcountersetupsimulationreport.png)
+I also did not get a violation for hold report.
 ![](fpgaday4new/fpgaday4upcounterholdsimulationreport.png)
 ## Part3 SOFA counter post impl
+For the counter post implementation. I edit the generate_testbench.openfpga with this command.
+```
+vpr ${VPR_ARCH_FILE} ${VPR_TESTBENCH_BLIF} --clock_modeling ideal --device ${OPENFPGA_VPR_DEVICE_LAYOUT} --route_chan_width ${OPENFPGA_VPR_ROUTE_CHAN_WIDTH} --absorb_buffer_luts off --sdc_file /home/gfreyolamit/day4/SOFA/FPGA1212_QLSOFA_HD_PNR/FPGA1212_QLSOFA_HD_task/BENCHMARK/counter.sdc --gen_post_synthesis_netlist on
+```
 ![](fpgaday4new/fpgaday4postupcountergeneratetbfpga.png)
-![](fpgaday4new/fpgaday4postupcounterfile.png)
-![](fpgaday4new/fpgaday4postupcounterfileclock.png)
+After execution of runOpenFPGA an up_counter_post_synthesis.v is generated as shown.
 ![](fpgaday4new/fpgaday4postupcounterfilegenerated.png)
+. I highlighted the module instantiation as this should match the parameters of the testbench we are going to use in simulation.
+![](fpgaday4new/fpgaday4postupcounterfile.png)
+Here I highlighted the clock which must match with the primitives.v clock parameter.
+![](fpgaday4new/fpgaday4postupcounterfileclock.png)
+For the post simulation I use xilinx vivado. I named the project SOFAupcounter.
 ![](fpgaday4new/fpgaday4postsimulationupcounter.png)
+I then imported the design source file and its corresponding testbench as shown in the source window.
 ![](fpgaday4new/fpgaday4postsimulationupcountertbcod.png)
 ![](fpgaday4new/fpgaday4postsimulationupcounterprimitivescode.png)
+Here is the simulation result as expected the counter counts from 0 to 15 which is equivalent to hexadecimal F then goes back to 0 after one clock cycle.
 ![](fpgaday4new/fpgaday4postsimulationupcounterresult.png)
-![](fpgaday4new/fpgaday4upcounterraceact.png)
+
 ## Part4 counter power
+Here I open the upcounter.act that is generated in the post implementation stage in SOFA.
+![](fpgaday4new/fpgaday4upcounterraceact.png)
+I then edit the generate_testbench.openfpga file with the following command.
+```
+vpr ${VPR_ARCH_FILE} ${VPR_TESTBENCH_BLIF} --clock_modeling ideal --device ${OPENFPGA_VPR_DEVICE_LAYOUT} --route_chan_width ${OPENFPGA_VPR_ROUTE_CHAN_WIDTH} --absorb_buffer_luts off   --power --activity_file /home/gfreyolamit/day4/SOFA/FPGA1212_QLSOFA_HD_PNR/FPGA1212_QLSOFA_HD_task/latest/vpr_arch/up_counter/MIN_ROUTE_CHAN_WIDTH/up_counter_ace_out.act   --tech_properties /home/gfreyolamit/vtr-verilog-to-routing/vtr_flow/tech/PTM_45nm/45nm.xml
+```
 ![](fpgaday4new/fpgaday4vprpowergeneratetestbenchfpgaedit.png)
+I also edit the file vpr_arch.xml file and add the following command just below the complexblocklist code.
+```
+<!-- added for power analysis  -->
+<power>
+    <local_interconnect C_wire="2.5e-10"/>
+    <mux_transistor_size mux_transistor_size="3"/>
+    <FF_size FF_size="4"/>
+    <LUT_transistor_size LUT_transistor_size="4"/>
+  </power>
+  <clocks>
+    <clock buffer_size="auto" C_wire="2.5e-10"/>
+  </clocks>
+</architecture>
+```
 ![](fpgaday4new/fpgaday4vprarchxmlfilescodeaddedforpoweranalysis.png)
-![](fpgaday4new/fpgaday4poweranalysistasksimulation.png)
+I edit the layout size to auto and the channel width to 150 in the task_simulaiton.conf as shown.
+![](fpgaday4new/fpgaday4poweranalysistasksimulation.png
+After the execution of runOpenFPGA a up_counter.power files has been generated in the /home/gfreyolamit/day4/SOFA/FPGA1212_QLSOFA_HD_PNR/FPGA1212_QLSOFA_HD_task/latest/vpr_arch/up_counter/MIN_ROUTE_CHAN_WIDTH/ directory.
 ![](fpgaday4new/fpgaday4poweranalysisbreakdown.png)
+Inside it is the total and breakdown of power consumption of each blocks as highlighted.
 ![](fpgaday4new/fpgaday4poweranalysisbreakdown2.png)
 
 ## Day 5 RISC-V core on custom SOFA fabric
