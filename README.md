@@ -207,9 +207,11 @@ $VTR_ROOT/vpr/vpr \
 ![](fpgaday2/fpgaday2vprcounterblifdisplayroutingcomplete.png)
 ● To run VPR for Post implimentation netlist timing simulation
 - We need to provide the vpr --gen_post_synthesis_netlist option to generate the post-implementation netlist and dump the timing information in Standard Delay Format(SDF):
-``$VTR_ROOT/vpr/vpr \
+```
+$VTR_ROOT/vpr/vpr \
 > $VTR_ROOT/vtr_flow/arch/timing/EArch.xml \
-> counter.pre-vpr.blif --gen_post_synthesis_netlist on``
+> counter.pre-vpr.blif --gen_post_synthesis_netlist on
+```
 ![](fpgaday2/fpgaday2vprcounterblifpostsynthesis.png)
 ![](fpgaday2/fpgaday2vprcounterblifpostsynthesisvfile.png)
 ![](fpgaday2/fpgaday2vprcounterblifprimitivesntestbench.png)
@@ -229,20 +231,33 @@ $VTR_ROOT/vpr/vpr \
 ![](fpgaday2/fpgaday2vprcounteprevprblifcounterpwr.png)
 ![](fpgaday2/fpgaday2vprcounteprevprblifcounterpwr2.png)
 ## Day 3 Introduction to RISC-V core programming on Vivado
+In this lab we implemented RISC-V core in BASYS3 FPGA Board using Xilinx Vivado. We first import the RISC-V verilog code and its testbench by clcning this link https://github.com/shivanishah269/risc-v-core.git in our local directory in the cloud. We then open vivado using command prompt by invoking command ```vivado```. The Xilinx Vivado opens and I created and named my new project as Project_RISCV. After creating the project I then proceed in importing the design source file in this case mythcore_test.v can be found in this link https://github.com/nandithaec/fpga_workshop_collaterals/blob/main/Day3/mythcore_test_no_ILA.v and the test file test.v using this https://github.com/nandithaec/fpga_workshop_collaterals/blob/main/Day3/test.v. It is important to note to check the checkbox for automatic import file to have your own local copy of the files in your project. I then choose the board package in this case BASYS3.
 ## Part 1: RVMyth vivado rtl-to-synthesis
+I did edit this line that I highlighted from the original code to match the design source RISCV module input and output parameters.
 ![](fpgaday3/fpgaday3testedit.png)
+I then run behavioral simulation by clicking the run button on the left side pane. A new window for simulation popup and I expand the window. Here as shown I change the run time parameter to 10ms to get enough sample of time for the RISC-V to execute. I then press the x cursor arrow then minus button to get zoom in to the waveform. Here as you can see it takes 675ns to completely execute a simple application which which adds 1 to 9 in RISC-V core.
 ![](fpgaday3/fpgaday3riscvwaveform.png)
+I then add an Integrated Logic Analyzer using IP catalog in the upper left portion of the window. I use 2 input with 1 bit and 8 bit width each. I then add the command generated in verilog to the design source and match the corresponding parameters.
 ![](fpgaday3/fpgaday3riscvwithILA.png)
+The next phase is elaboration. Press the open elaboration design button below RTL analysis then a pop up named Elaborated Design will show up press ok. The package window will show up at the bottom of the lane there is an io pin window in it you can configure the io pin assignment of each signal. In my case I assign clock to w5 pin and reset in R2 pin with 3.3vcc as shown.
 ![](fpgaday3/fpgaday3riscvwithILAelaboraiton.png)
+After that I open the constraints wizard and use 100 Mhz clock then click skip to finish. A window summary is generated as shown below.
 ![](fpgaday3/fpgaday3riscvwithILAconstraints.png)
 ## Part 2: RVMyth Vivado synthesis-to-bitstream
+After sdc file is setup correctly I run synthesis. After synthesis is completed I open design synthesis and click the corresponding reports that I want to see. Here I want to see the utilization report. In it we only use 9 percent of LUTs, 7 percent of flipflop and 3 percent of RAM in implementing the RISCV processor in BASYS3 board.
 ![](fpgaday3/fpgaday3riscvwithILAutilazationrptt.png)
 ![](fpgaday3/fpgaday3riscvwithILAsummary.png)
+I then click the schematic option below synthesis design. The schematic for RISCV processor are shown.
 ![](fpgaday3/fpgaday3riscvwithILschematic.png)
-![](fpgaday3/fpgaday3riscvwithILfloorplan.png)
+I then more to implementation phase by clicking open implementation design. A device window will apprear and in it is the implemented RISCV in BASYS3 architecture.
 ![](fpgaday3/fpgaday3riscvwithILfloorplan0.png)
+I then zoom in to the hardware implementation.
+![](fpgaday3/fpgaday3riscvwithILfloorplan.png)
+You can also highlight which part of the implemented design you want to see.
 ![](fpgaday3/fpgaday3riscvwithILfloorplanhighlightnets.png)
+I also take a look at the timing summary. Here I do not have setup and hold violations as they are all positive.
 ![](fpgaday3/fpgaday3riscvwithILtimingsummary.png)
+The last phase is the generate bitstream. Here I do not have the board BASYS3 and the cloud also does not have a fpga board connected. This part is where you program the board you selected.
 ![](fpgaday3/fpgaday3riscvwithILwirtebitstreamnotarget.png)
 
 
