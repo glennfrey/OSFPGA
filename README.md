@@ -274,6 +274,7 @@ This is the code of counter.blif file.
 Here I edited the counter.blif code particularly the up_counter_clk as it does not match the name of the clock for the sdc file.
 ![](fpgaday2/fpgaday2vprcounteprevprblifedited.png)
 I then write the following code:
+
 ```
 $VTR_ROOT/vpr/vpr \
 > $VTR_ROOT/vtr_flow/arch/timing/EArch.xml \
