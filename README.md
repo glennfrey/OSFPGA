@@ -172,21 +172,30 @@ Run VPR on a Pre-Synthesized Circuit
 ![](fpgaday2/fpgaday2vprslackreportcosntraint.png)
 ## Part 3: VTR
 VTR
-● To check installation:
-``$VTR_ROOT/vtr_flow/scripts/run_vtr_task.py basic_flow``
-– Expected output: ``k6_N10_memSize16384_memData64_40nm_timing/ch_intrinsics...OK``
-● To run command VTR for Counter input the following command:
-``$VTR_ROOT/vtr_flow/scripts/run_vtr_flow.pl \
+- To check installation:
+```
+$VTR_ROOT/vtr_flow/scripts/run_vtr_task.py basic_flow
+```
+– Expected output: 
+```
+k6_N10_memSize16384_memData64_40nm_timing/ch_intrinsics...OK
+```
+- To run command VTR for Counter input the following command:
+```
+$VTR_ROOT/vtr_flow/scripts/run_vtr_flow.py \
 > $VTR_ROOT/doc/src/quickstart/counter.v \
 > $VTR_ROOT/vtr_flow/arch/timing/EArch.xml \
 > -temp_dir . \
-> --route_chan_width 100``
-● To open GUI for above design
-``$VTR_ROOT/vpr/vpr \
+> --route_chan_width 100
+```
+- To open GUI for above design
+```
+$VTR_ROOT/vpr/vpr \
    > $VTR_ROOT/vtr_flow/arch/timing/EArch.xml \
    > counter --circuit_file counter.pre-vpr.blif \
    > --route_chan_width 100 \
-   > --analysis --disp on``
+   > --analysis --disp on
+```
 ![](fpgaday2/fpgaday2vprcounterv.png)
 ![](fpgaday2/fpgaday2vprcounterblif.png)
 ![](fpgaday2/fpgaday2vprcounterblifdisplay.png)
