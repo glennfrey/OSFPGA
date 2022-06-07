@@ -110,12 +110,12 @@ Different ways of programming
 
 OpenFPGA
 
-● To improve the design and development times of current methodologies to produce an FPGA which involve several hardware and software engineers and development for several months. OpenFPGA an Open source framework can be used to quickly generate a fabric for a custom FPGA (specific to your design).
+- To improve the design and development times of current methodologies to produce an FPGA which involve several hardware and software engineers and development for several months. OpenFPGA an Open source framework can be used to quickly generate a fabric for a custom FPGA (specific to your design).
    – Automation techniques used
    – Reduces FPGA development cycle of a new FPGA to a few days
    – Provides open source design tools
 
-● Need for custom FPGAs?
+- Need for custom FPGAs?
    – Accelerate domain-specific applications: FPGA architectures have to be custom made, to provide maximum computing. Prototyping and producing a custom FPGA is costly and time-consuming.
    - Customise your own FPGA fabric using a set of templates (> 20 FPGA architectures- in xml files optimised for different applications)
    - Generates Verilog netlists describing an FPGA fabric based on an XMLbased description file: VPR’s (Versatile Place and Route) architecture description language
@@ -124,16 +124,16 @@ OpenFPGA
    - Bitstream generation support based on the same XML-based description file 
 
 Running the tool
-● The VTR detailed instruction can be found in this link: https://docs.verilogtorouting.org/en/latest/quickstart/
-● In this workshop we don't have to Build OpenFPGA as it is done on cloud as well as build VTR.
-● we can run VPR on a Pre-Synthesized Circuit and observe the result files then visualize (GUI) circuit implementation.
-● Run the entire VTR flow automatically
-– Implement our own circuit in this workshop(counter.v) on a pre-existing FPGA architecture Earch.xml which can be found in $VTR_ROOT/vtr_flow/arch.
-– Use an automated approach (Odin II and ABC are automatically run) using python script
-– Perform timing simulation on the generated fabric
+- The VTR detailed instruction can be found in this link: https://docs.verilogtorouting.org/en/latest/quickstart/
+- In this workshop we don't have to Build OpenFPGA as it is done on cloud as well as build VTR.
+- we can run VPR on a Pre-Synthesized Circuit and observe the result files then visualize (GUI) circuit implementation.
+- Run the entire VTR flow automatically
+   – Implement our own circuit in this workshop(counter.v) on a pre-existing FPGA architecture Earch.xml which can be found in $VTR_ROOT/vtr_flow/arch.
+   – Use an automated approach (Odin II and ABC are automatically run) using python script
+   – Perform timing simulation on the generated fabric
 
 ## Part 2: VPR
-● To run VPR on a Pre-Synthesized Circuit you can check this link for more detailed information https://docs.verilogtorouting.org/en/latest/vpr/
+- To run VPR on a Pre-Synthesized Circuit you can check this link for more detailed information https://docs.verilogtorouting.org/en/latest/vpr/
    – Packing (combines primitives into complex blocks)
    – Placement (places complex blocks within the FPGA grid)
    – Routing (determines interconnections between blocks)
