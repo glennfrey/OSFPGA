@@ -50,8 +50,9 @@ circuits
 - FPGA configuration is specified using HDL similar to an ASIC (application specific Integrated circuit)
 - Logic design in FPGA is different it uses LUTs, Flip-flops, configurable logic blocks.
 
-● ASIC(Application Specific Integrated Circuit) is designed from RTL to layout. Layout must be sent to semiconductor foundary for fabrication. ASIC cannot be reprogrammed.
-● FPGA (Field Programmable Gate Array) is designed from RTL to bitstream. Design programmed on the FPGA which is bought off-the-shelf. FPGA can be re-programmed.
+● ASIC vs FPGA
+- ASIC(Application Specific Integrated Circuit) is designed from RTL to layout. Layout must be sent to semiconductor foundary for fabrication. ASIC cannot be reprogrammed.
+- FPGA (Field Programmable Gate Array) is designed from RTL to bitstream. Design programmed on the FPGA which is bought off-the-shelf. FPGA can be re-programmed.
 
 ● Applications
 - Hardware acceleration
