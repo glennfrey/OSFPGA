@@ -3,10 +3,11 @@ FPGA - Fabric, Design and Architecture
 
 ![](bannerfpga.png)
 ### ABOUT THE WORKSHOP
-The Workshop is a 5-day basic to advance program that is design for fresher and professional who wants to build a career in VLSI industry. It is a cloud based workshop that comprises of training courses that covers RISC-V specs, RISC-V software, How to implement RISC-V basic specs using TL-Verilog and Simulate your own RISC-V core. In short, you are going to write RTL and build RISC-V core on your own.
+The Workshop is a 5-day basic to advance program that is design for fresher and professional who wants to build a career in VLSI industry. It is a cloud based workshop that comprises of training courses that covers intro to FPGA, OpenFPGA, RISC-V core programming in Vivado, intro to SOFA FPGA Fabric IP and RISC-V core on custom SOFA fabric.
 ### AUTHOR OF THE WORKSHOP
 #### Mr. Kunal Ghosh
 Co-founder of VLSI System Design (VSD) Corporation Private Limited
+#### Professor Nanditha Rao
 #### 
 ### AGENDA
  [Day 1 Intro](#Day1-Intro)
@@ -453,5 +454,5 @@ I did several attempts and check the debug and I got errors. I was told by Profe
 
 ## Acknowledgement
 
-Professor Nandith Rao
-Sir Kunal Ghosh
+- Professor Nandith Rao
+- Sir Kunal Ghosh
