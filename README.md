@@ -62,7 +62,7 @@ ASIC vs FPGA
    - High performance computing
    - Machine learning
 
-● FPGA Architecture
+FPGA Architecture
 - Configurable logic blocks (CLB)-- Implement combinatorial and sequential logic. Based on LUT and Flip-flop/latches
 - Look-up Tables (LUT) which implement the logic functions using truth table
 - Carry and Control Logic- Implements arithmetic operations
