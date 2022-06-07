@@ -247,6 +247,22 @@ $VTR_ROOT/vpr/vpr \
 
 
 ## Day 4 Introduction to SOFA FPGA Fabric IP
+SOFA overview
+https://github.com/lnis-uofu/SOFA
+https://skywater-openfpga.readthedocs.io/en/latest/
+Skywater Opensource FPGAs
+- SOFA (Skywater Opensource FPGAs) are a series of open-source FPGA IPs using the open-source Skywater 130nm PDK and  OpenFPGA framework.
+- Open-source embedded FPGA IP library, from the architecture description to production ready layouts.
+
+HD eFPGAs - The High Density (HD) FPGAs are embedded FPGAs built with the Skywater 130nm High Density Standard Cell library (Sky130_fd_SC_HD).
+
+Commands to be run by user on cloud
+- We assume that OpenFPGA is already installed
+and its path is exported
+- Now run the following to install SOFA and make sure it is working:
+  * git clone https://github.com/lnis-uofu/SOFA.git
+  * cd FPGA1212_QLSOFA_HD_PNR
+  * make runOpenFPGA
 ## Part1 SOFA counter area]
 ![](fpgaday4/fpgaday4configlocation.png)
 ![](fpgaday4/fpgaday4generatetestbenchfpg.png)
