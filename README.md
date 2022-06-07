@@ -257,23 +257,55 @@ $VTR_ROOT/vpr/vpr \
 > counter.pre-vpr.blif --gen_post_synthesis_netlist on
 ```
 ![](fpgaday2/fpgaday2vprcounterblifpostsynthesis.png)
+After I run the command a post synthesis v file is generated and this is the code for the post synthesis counter verilog file.
 ![](fpgaday2/fpgaday2vprcounterblifpostsynthesisvfile.png)
+Here I add the primitives and testbench file in the same directory as the post synthesis file.
 ![](fpgaday2/fpgaday2vprcounterblifprimitivesntestbench.png)
+Here I open Vivado, created a project and add the design files and simulation files.
 ![](fpgaday2/fpgaday2vprcounterblifvivadopostsimulation.png)
+Here you can see the files that I included and the name of the project is post_simulation.
 ![](fpgaday2/fpgaday2vprcounterblifvivadosources.png)
+Here I edit the testbench counter as it does not matchup with the parameters of post synthesis file.
 ![](fpgaday2/fpgaday2vprcounterblifvivadoeditcounter.png)
+I then run the simulation. Here you can see the output bits increments every clock cycle and goes to 0 after 16 cycle.
 ![](fpgaday2/fpgaday2vprcounterblifvivadosimulation.png)
+This is the code of counter.blif file.
 ![](fpgaday2/fpgaday2vprcounteprevprblif.png)
+Here I edited the counter.blif code particularly the up_counter_clk as it does not match the name of the clock for the sdc file.
 ![](fpgaday2/fpgaday2vprcounteprevprblifedited.png)
+I then write the following code:
+```
+$VTR_ROOT/vpr/vpr \
+> $VTR_ROOT/vtr_flow/arch/timing/EArch.xml \
+> counter.pre-vpr.blif \
+> --route_chan_width 100 \
+> --sdc_file /home/gfreyolamit/glenn.sdc
+```
 ![](fpgaday2/fpgaday2vprcounteprevprblifcomman.png)
+Here the vpr_std.log confirms vpr is successful.
 ![](fpgaday2/fpgaday2vprcounteprevprblifcommandsucceeded.png)
+For the timing analysis, looking at the slack report it has shown positive slack therefore no violation.
 ![](fpgaday2/fpgaday2vprcounteprevprblifreportslack.png)
+Here are the log report for area analysis.
 ![](fpgaday2/fpgaday2vprcounteprevprbliflogblocks.png)
+Logic elements for post synthesis.
 ![](fpgaday2/fpgaday2vprcounteprevprblifloglogicelement.png)
+This is the pb log detail as shown.
 ![](fpgaday2/fpgaday2vprcounteprevprbliflogdetail.png)
-![](fpgaday2/fpgaday2vprcounteprevprblifpower.png)
-![](fpgaday2/fpgaday2vprcounteprevprblifcounterpwr.png)
-![](fpgaday2/fpgaday2vprcounteprevprblifcounterpwr2.png)
+```
+To run power analysis input the following command as follows.
+$VTR_ROOT/vtr_flow/scripts/run_vtr_flow.py \
+> /home/gfreyolamit/vtr-verilog-to-routing/doc/src/quickstart/counter.v \
+> $VTR_ROOT/vtr_flow/arch/timing/EArch.xml \
+> -power -cmos_tech $VTR_ROOT/vtr_flow/tech/PTM_45nm/45nm.xml \
+> -temp_dir . \
+>--route_chan_width 100
+```
+![](fpgaday2vprcounteprevprblifpower.png)
+Here is the power analysis report or power breakdown.
+![](fpgaday2vprcounteprevprblifcounterpwr.png)
+Here is a more detailed power analysis report as shown.
+![](fpgaday2vprcounteprevprblifcounterpwr2.png)
 ## Day 3 Introduction to RISC-V core programming on Vivado
 In this lab we implemented RISC-V core in BASYS3 FPGA Board using Xilinx Vivado. We first import the RISC-V verilog code and its testbench by clcning this link https://github.com/shivanishah269/risc-v-core.git in our local directory in the cloud. We then open vivado using command prompt by invoking command ```vivado```. The Xilinx Vivado opens and I created and named my new project as Project_RISCV. After creating the project I then proceed in importing the design source file in this case mythcore_test.v can be found in this link https://github.com/nandithaec/fpga_workshop_collaterals/blob/main/Day3/mythcore_test_no_ILA.v and the test file test.v using this https://github.com/nandithaec/fpga_workshop_collaterals/blob/main/Day3/test.v. It is important to note to check the checkbox for automatic import file to have your own local copy of the files in your project. I then choose the board package in this case BASYS3.
 ## Part 1: RVMyth vivado rtl-to-synthesis
