@@ -45,40 +45,31 @@ History of programmable logic
 – Generate customisable hardware
 – Study the effect of area, speed, power of the digital
 circuits
-What is an FPGA?
-● A “field programmable” gate array: Integrated
-circuit designed to be configured by a designer
-● FPGA configuration is specified using HDL
-similar to an ASIC (application specific
-Integrated circuit)
-● Logic design in FPGA is different
-– Uses LUTs, Flip-flops, configurable logic
-blocks
-ASIC(Application Specific Integrated Circuit) is designed from RTL to layout. Layout must be sent to semiconductor foundary for fabrication. ASIC cannot be reprogrammed.
-FPGA (Field Programmable Gate Array) is designed from RTL to bitstream. Design programmed on the FPGA which is bought off-the-shelf. FPGA can be re-programmed.
+● What is an FPGA?
+- A “field programmable” gate array: Integrated circuit designed to be configured by a designer.
+- FPGA configuration is specified using HDL similar to an ASIC (application specific Integrated circuit)
+- Logic design in FPGA is different it uses LUTs, Flip-flops, configurable logic blocks.
 
-Applications
-● Hardware acceleration
-● Signal processing
-● Device controllers
-● Embedded systems
-● Aerospace
-● High performance computing
-● Machine learning
+● ASIC(Application Specific Integrated Circuit) is designed from RTL to layout. Layout must be sent to semiconductor foundary for fabrication. ASIC cannot be reprogrammed.
+● FPGA (Field Programmable Gate Array) is designed from RTL to bitstream. Design programmed on the FPGA which is bought off-the-shelf. FPGA can be re-programmed.
 
-FPGA Architecture
-Configurable logic blocks (CLB)-- Implement combinatorial and
-sequential logic. Based on LUT and Flip-flop/latches
-Look-up Tables (LUT) which implement the logic functions- truth
-table
+● Applications
+- Hardware acceleration
+- Signal processing
+- Device controllers
+- Embedded systems
+- Aerospace
+- High performance computing
+- Machine learning
+
+● FPGA Architecture
+- Configurable logic blocks (CLB)-- Implement combinatorial and sequential logic. Based on LUT and Flip-flop/latches
+- Look-up Tables (LUT) which implement the logic functions using truth table
 - Carry and Control Logic- Implements arithmetic operations
 - Flip Flops (FFs)/ Latches
 - Memory Elements
 - Programmable I/O blocks - Configurable I/Os for external interface connections
 - Programmable interconnect- Wires to connect inputs, CLBs
-
-
-
 
 ## Vivado counter
 ![](fpgaday1/fpgaday1.png)
@@ -146,28 +137,20 @@ FPGA architecture Earch.xml (VTR_ROOT/vtr_flow/arch)
 – Perform timing simulation on the generated fabric
 
 ## Part 2: VPR
-Run VPR on a Pre-Synthesized Circuit
-● Run VPR on a Pre-Synthesized Circuit
-https://docs.verilogtorouting.org/en/latest/vpr/
+● To run VPR on a Pre-Synthesized Circuit you can check this link for more detailed information https://docs.verilogtorouting.org/en/latest/vpr/
 – Packing (combines primitives into complex blocks)
 – Placement (places complex blocks within the FPGA grid)
 – Routing (determines interconnections between blocks)
 – Analysis (analyzes the implementation)
-● Input: Blif file, Earch
-● Command:> $VTR_ROOT/vpr/vpr \
- $VTR_ROOT/vtr_flow/arch/timing/EArch.xml \
- $VTR_ROOT/vtr_flow/benchmarks/blif/tseng.blif \ --
-route_chan_width 100
+● Input files are Blif file and Earch.xml
+``$VTR_ROOT/vpr/vpr \
+> $VTR_ROOT/vtr_flow/arch/timing/EArch.xml \
+> $VTR_ROOT/vtr_flow/benchmarks/blif/tseng.blif \ --
+> route_chan_width 100``
 Run VPR on a Pre-Synthesized Circuit
-● BLIF Netlist (.blif)
-– https://docs.verilogtorouting.org/en/latest/vpr/file_formats/
-– The technology mapped circuit to be implement
-on the target FPGA is specified as a Berkely
-Logic Interchange Format (BLIF) netlist.
-– The netlist must be flattened and consist of only
-primitives (e.g. .names, .latch, .subckt)
-– Clock and delay constraints can be specified
-with an SDC File.
+● BLIF Netlist (.blif) - The technology mapped circuit to be implement on the target FPGA is specified as a Berkely Logic Interchange Format (BLIF) netlist. The netlist must be flattened and consist of only primitives (e.g. .names, .latch, .subckt). Clock and delay constraints can be specified with an SDC File.
+● Outputs:
+- .net file: The circuit .net file is an xml file that describes a post-packed user circuit. It represents the user netlist in terms of the complex logic blocks of the target architecture. This file is generated from the packing stage and used as input to the placement stage in VPR.
 ![](fpgaday2/fpgaday2vprcommand.png)
 ![](fpgaday2/fpgaday2vprdisplay.png)
 ![](fpgaday2/fpgaday2vprblockselected.png)
@@ -186,7 +169,22 @@ with an SDC File.
 ![](fpgaday2/fpgaday2vprslackreportcosntraintfle.png)
 ![](fpgaday2/fpgaday2vprslackreportcosntraint.png)
 ## Part 3: VTR
-
+VTR
+● To check installation:
+``$VTR_ROOT/vtr_flow/scripts/run_vtr_task.py basic_flow``
+– Expected output: ``k6_N10_memSize16384_memData64_40nm_timing/ch_intrinsics...OK``
+● To run command VTR for Counter input the following command:
+``$VTR_ROOT/vtr_flow/scripts/run_vtr_flow.pl \
+> $VTR_ROOT/doc/src/quickstart/counter.v \
+> $VTR_ROOT/vtr_flow/arch/timing/EArch.xml \
+> -temp_dir . \
+> --route_chan_width 100``
+● To open GUI for above design
+``$VTR_ROOT/vpr/vpr \
+   > $VTR_ROOT/vtr_flow/arch/timing/EArch.xml \
+   > counter --circuit_file counter.pre-vpr.blif \
+   > --route_chan_width 100 \
+   > --analysis --disp on``
 ![](fpgaday2/fpgaday2vprcounterv.png)
 ![](fpgaday2/fpgaday2vprcounterblif.png)
 ![](fpgaday2/fpgaday2vprcounterblifdisplay.png)
@@ -196,6 +194,11 @@ with an SDC File.
 ![](fpgaday2/fpgaday2vprcounterblifdisplayplacementcomplete.png)
 ![](fpgaday2/fpgaday2vprcounterblifdisplaytogglerr.png)
 ![](fpgaday2/fpgaday2vprcounterblifdisplayroutingcomplete.png)
+● To run VPR for Post implimentation netlist timing simulation
+- We need to provide the vpr --gen_post_synthesis_netlist option to generate the post-implementation netlist and dump the timing information in Standard Delay Format(SDF):
+``$VTR_ROOT/vpr/vpr \
+> $VTR_ROOT/vtr_flow/arch/timing/EArch.xml \
+> counter.pre-vpr.blif --gen_post_synthesis_netlist on``
 ![](fpgaday2/fpgaday2vprcounterblifpostsynthesis.png)
 ![](fpgaday2/fpgaday2vprcounterblifpostsynthesisvfile.png)
 ![](fpgaday2/fpgaday2vprcounterblifprimitivesntestbench.png)
