@@ -379,7 +379,7 @@ I also edit the file vpr_arch.xml file and add the following command just below 
 ```
 ![](fpgaday4new/fpgaday4vprarchxmlfilescodeaddedforpoweranalysis.png)
 I edit the layout size to auto and the channel width to 150 in the task_simulaiton.conf as shown.
-![](fpgaday4new/fpgaday4poweranalysistasksimulation.png
+![](fpgaday4new/fpgaday4poweranalysistasksimulation.png)
 After the execution of runOpenFPGA a up_counter.power files has been generated in the /home/gfreyolamit/day4/SOFA/FPGA1212_QLSOFA_HD_PNR/FPGA1212_QLSOFA_HD_task/latest/vpr_arch/up_counter/MIN_ROUTE_CHAN_WIDTH/ directory.
 ![](fpgaday4new/fpgaday4poweranalysisbreakdown.png)
 Inside it is the total and breakdown of power consumption of each blocks as highlighted.
@@ -387,32 +387,71 @@ Inside it is the total and breakdown of power consumption of each blocks as high
 
 ## Day 5 RISC-V core on custom SOFA fabric
 ## Part1 SOFA-RVMyth run
+In this lab we are going to create a custom FPGA for RISC-V processor using Skywater 130nm PDK and OpenFPGA framework.
+To start with we have to edit the generate_testbench.openfpga file with the following code.
+```
+vpr ${VPR_ARCH_FILE} ${VPR_TESTBENCH_BLIF} --clock_modeling ideal --device ${OPENFPGA_VPR_DEVICE_LAYOUT} --route_chan_width ${OPENFPGA_VPR_ROUTE_CHAN_WIDTH} --absorb_buffer_luts off
+```
 ![](fpgaday5rvmythgeneratetbfpga.png)
+For the task_simulation.conf file I change the layout parameter to auto and channel width to 180nm. I did added the source file in the folder rvmyth which is inside the BENCHMARK folder as shown in the path parameter. And change the bench0_top to core.
 ![](fpgaday5simulationconf.png)
+In the vpr_arch.xml I uncommment the line 156 and 157 and line 259.
 ![](fpgaday5rvmythvprarchedited.png)
+After executing the runOpenFPGA I got no errors in the openfpgashell.log
 ![](fpgaday5/fpgaday51stcommandopenfpgashelllog.png)
+I also did not receive error in the vpr_std.log as highlighted.
 ![](fpgaday5/fpgaday51stcommandvprstdoutlog.png)
 ## Part2 SOFA-RVMyth timing and area
+Looking in the circuit statistics generated in the vpr_std.log file. The RVMyth uses 5492 blocks. The detailed are as shown. We can confirm that this is correct as it has 2 inputs which is the clock and reset and eight output which is the 8 bit output.
 ![](fpgaday5/fpgaday51stcommandvprstdoutlogcrctstat.png)
+The logic element that RVmyth uses are highlighted below.
 ![](fpgaday5/fpgaday51stcommandvprstdoutloglogicelements.png)
+For timing analysis, we need to add sdc file inside the rvmyth folder which is inside the BENCHMARK folder. Then edit the generate_testbench.openfpga file as shown with this code. 
+```
+vpr ${VPR_ARCH_FILE} ${VPR_TESTBENCH_BLIF} --clock_modeling ideal --device ${OPENFPGA_VPR_DEVICE_LAYOUT} --route_chan_width ${OPENFPGA_VPR_ROUTE_CHAN_WIDTH} --absorb_buffer_luts off --sdc_file /home/gfreyolamit/day4/SOFA/FPGA1212_QLSOFA_HD_PNR/FPGA1212_QLSOFA_HD_task/BENCHMARK/rvmyth/mythcore.sdc
+```
+In the sdc file I use the clock of 200ns since the rvmyth core is a complex logic.
 ![](fpgaday5/fpgaday5timinganalysissdcadditioningeneratetbfpga.png)
+After executing the runOpenFPGA the reports and logs were created. The setup report has positive slack therefore no slack violations.
 ![](fpgaday5/fpgaday5timinganalysissetupreport.png)
+I also past the hold report by a very small margin as shown below.
 ![](fpgaday5/fpgaday5timinganalysholdreport.png)
+I then check the openfpgashell.log for possible errors and there are none.
 ![](fpgaday5/fpgaday5timinganalysopenshellfpga.png)
+Same with vpr_std.log file. No errors were reported.
 ![](fpgaday5/fpgaday5timinganalysvprstdoutlog.png)
 
 
 ## Part3 RVMyth-post impl netlist
+To generate post implementation netlist for RVMyth I just edited the generate_testbench.openfpga with the following command.
+```
+vpr ${VPR_ARCH_FILE} ${VPR_TESTBENCH_BLIF} --clock_modeling ideal --device ${OPENFPGA_VPR_DEVICE_LAYOUT} --route_chan_width ${OPENFPGA_VPR_ROUTE_CHAN_WIDTH} --absorb_buffer_luts off --sdc_file /home/gfreyolamit/day4/SOFA/FPGA1212_QLSOFA_HD_PNR/FPGA1212_QLSOFA_HD_task/BENCHMARK/rvmyth/mythcore.sdc --gen_post_synthesis_netlist on
+```
+I the execute the runOpenFPGA and a core_post_synthesis.v is generated in this directory /home/gfreyolamit/day4/SOFA/FPGA1212_QLSOFA_HD_PNR/FPGA1212_QLSOFA_HD_task/latest/vpr_arch/up_counter/MIN_ROUTE_CHAN_WIDTH
 ![](fpgaday5/fpgaday5corepostsynthesisgenerated.png)
+Looking inside the code I highlighted the inputs and outputs parameter of core module as this has to match the testbench for the simulation in vivado.
 ![](fpgaday5/fpgaday5corepostsynthesiscode.png)
+I also highlighted the clock parameter as this will be used by the primitives.v file and the clock must match.
 ![](fpgaday5/fpgaday5corepostsynthesiscodeclock.png)
 
 ## Part4 SOFA-RVMyth Vivado simulation
+The start the post simulation of the RVMyth in the vivado I added the testbench first inside the rvmyth folder. I also make sure that it matches the parameter of the rvmyth core we generated.
 ![](fpgaday5/fpgaday5testv.png)
+The primitives.v clock matches with the rvmyth desigh source as highlighted.
 ![](fpgaday5/fpgaday5primitives.png)
+Here I imported the design files and the test file as shown.
 ![](fpgaday5/fpgaday5vivadowithfiles.png)
+The simulation is now ready.
 ![](fpgaday5/fpgaday5vivadosimulation.png)
+Here it takes 682 ns for the RVMyth to execute the command.
 ![](fpgaday5/fpgaday5vivadosimulation2.png)
-![](fpgaday5/fpgaday5vivadoomplementation.png)
+Here I try to run power analysis and input the following commands. Although this part is not covered in the workshop I try to generate power analysis report as I was curious.
 ![](fpgaday5/fpgaday5poweranalysis.png)
+I did several attempts and check the debug and I got errors. I was told by Professor Nanditha Rao that generation of power analysis is complex so I just giveup.
 ![](fpgaday5/fpgaday5poweranalysisaddlinesvpr_archxml.png)
+
+
+## Acknowledgement
+
+Professor Nandith Rao
+Sir Kunal Ghosh
