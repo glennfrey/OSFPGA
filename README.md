@@ -224,6 +224,8 @@ $VTR_ROOT/vtr_flow/scripts/run_vtr_flow.py \
 > -temp_dir . \
 > --route_chan_width 100
 ```
+Here I try to run the VTR flow using python script with the following commands as shown.
+![](fpgaday2/fpgaday2vprcounterv.png)
 - To open GUI for above design
 ```
 $VTR_ROOT/vpr/vpr \
@@ -232,14 +234,20 @@ $VTR_ROOT/vpr/vpr \
    > --route_chan_width 100 \
    > --analysis --disp on
 ```
-![](fpgaday2/fpgaday2vprcounterv.png)
 ![](fpgaday2/fpgaday2vprcounterblif.png)
+The vpr display show up for the counter.
 ![](fpgaday2/fpgaday2vprcounterblifdisplay.png)
+This is a logical nets option for the toggle nets.
 ![](fpgaday2/fpgaday2vprcounterblifdisplaylogicalcon.png)
+Here I try to click crit path to investigate critical path for this counter using this particular architecture. The correspanding windows for report also states completed routing consistency check successfully.
 ![](fpgaday2/fpgaday2vprcounterblifdisplaycritpath.png)
+By clicking proceed the window on the right also report slack histogram.
 ![](fpgaday2/fpgaday2vprcounterblifdisplaynoanalysis.png)
+Here in the toggle placement macros option I chose route and the corresponding diplay shows up.
 ![](fpgaday2/fpgaday2vprcounterblifdisplayplacementcomplete.png)
+Here I play with the toggle rr route option and generated this display
 ![](fpgaday2/fpgaday2vprcounterblifdisplaytogglerr.png)
+Here I proceed and play with toggle congestion button and the display changes as shown. Also the window on the right states completed routing consistency check successfullly.
 ![](fpgaday2/fpgaday2vprcounterblifdisplayroutingcomplete.png)
 ● To run VPR for Post implimentation netlist timing simulation
 - We need to provide the vpr --gen_post_synthesis_netlist option to generate the post-implementation netlist and dump the timing information in Standard Delay Format(SDF):
