@@ -99,49 +99,45 @@ ASIC vs FPGA
 Different ways of programming
 ● Local programing on the Basys3 board
 ● Remote programing
-– Inputs through Virtual Input/Output and Outputs observed on the board
-– Inputs through Virtual Input/Output and Outputs observed on the Integrated Logic Analyzer (ILA)
+   – Inputs through Virtual Input/Output and Outputs observed on the board
+   – Inputs through Virtual Input/Output and Outputs observed on the Integrated Logic Analyzer (ILA)
 ![](fpgaday1/fpgaday1ipcatalogvio.png)
 ![](fpgaday1/fpgaday1vioioplanning.png)
 ![](fpgaday1/fpgaday1viobitstream.png)
 
 ## Day OpenFPGA2
 ## Part 1: OpenFPGA Intro
+
 OpenFPGA
-● Current methodologies to produce an FPGA involve several hardware and software engineers and development for several months
-● How do we improve the design/development times?
-● OpenFPGA: Open source framework which can be used to quickly generate a fabric for a custom FPGA (specific to your design)
-– Automation techniques used
-– Reduces FPGA development cycle of a new FPGA to a few days
-– Provides open source design tools
-OpenFPGA
+
+● To improve the design and development times of current methodologies to produce an FPGA which involve several hardware and software engineers and development for several months. OpenFPGA an Open source framework can be used to quickly generate a fabric for a custom FPGA (specific to your design).
+   – Automation techniques used
+   – Reduces FPGA development cycle of a new FPGA to a few days
+   – Provides open source design tools
+
 ● Need for custom FPGAs?
-– Accelerate domain-specific applications: FPGA architectures have to be custom made, to provide maximum computing. Prototyping and producing a custom FPGA is costly and time-consuming
-● Customise your own FPGA fabric using a set of templates (> 20 FPGA architectures- in xml files optimised for different applications)
-● Generates Verilog netlists describing an FPGA fabric based on an XMLbased description file: VPR’s (Versatile Place and Route) architecture description language
-● Allows you to write your own FPGA fabric (for a specific application) using OpenFPGA’s architecture description language
-● Automatically generates Verilog testbenches to validate the correctness of FPGA fabric
-● Bitstream generation support based on the same XML-based description file 
+   – Accelerate domain-specific applications: FPGA architectures have to be custom made, to provide maximum computing. Prototyping and producing a custom FPGA is costly and time-consuming.
+   - Customise your own FPGA fabric using a set of templates (> 20 FPGA architectures- in xml files optimised for different applications)
+   - Generates Verilog netlists describing an FPGA fabric based on an XMLbased description file: VPR’s (Versatile Place and Route) architecture description language
+   - Allows you to write your own FPGA fabric (for a specific application) using OpenFPGA’s architecture description language
+   - Automatically generates Verilog testbenches to validate the correctness of FPGA fabric
+   - Bitstream generation support based on the same XML-based description file 
+
 Running the tool
-● VTR:
-– https://docs.verilogtorouting.org/en/latest/quickstart/
-● Build OpenFPGA (done on cloud)
-● Build VTR (done on cloud)
-● Run VPR on a Pre-Synthesized Circuit
-– Observe the result files
-– Visualize (GUI) circuit implementation
+● The VTR detailed instruction can be found in this link: https://docs.verilogtorouting.org/en/latest/quickstart/
+● In this workshop we don't have to Build OpenFPGA as it is done on cloud as well as build VTR.
+● we can run VPR on a Pre-Synthesized Circuit and observe the result files then visualize (GUI) circuit implementation.
 ● Run the entire VTR flow automatically
-– Implement our own circuit (blink.v and counter.v) on a pre-existing
-FPGA architecture Earch.xml (VTR_ROOT/vtr_flow/arch)
-– Use an automated approach (Odin II and ABC are automatically run)
+– Implement our own circuit in this workshop(counter.v) on a pre-existing FPGA architecture Earch.xml which can be found in $VTR_ROOT/vtr_flow/arch.
+– Use an automated approach (Odin II and ABC are automatically run) using python script
 – Perform timing simulation on the generated fabric
 
 ## Part 2: VPR
 ● To run VPR on a Pre-Synthesized Circuit you can check this link for more detailed information https://docs.verilogtorouting.org/en/latest/vpr/
-– Packing (combines primitives into complex blocks)
-– Placement (places complex blocks within the FPGA grid)
-– Routing (determines interconnections between blocks)
-– Analysis (analyzes the implementation)
+   – Packing (combines primitives into complex blocks)
+   – Placement (places complex blocks within the FPGA grid)
+   – Routing (determines interconnections between blocks)
+   – Analysis (analyzes the implementation)
 ● Input files are Blif file and Earch.xml
 ``$VTR_ROOT/vpr/vpr \
 > $VTR_ROOT/vtr_flow/arch/timing/EArch.xml \
@@ -150,7 +146,7 @@ FPGA architecture Earch.xml (VTR_ROOT/vtr_flow/arch)
 Run VPR on a Pre-Synthesized Circuit
 ● BLIF Netlist (.blif) - The technology mapped circuit to be implement on the target FPGA is specified as a Berkely Logic Interchange Format (BLIF) netlist. The netlist must be flattened and consist of only primitives (e.g. .names, .latch, .subckt). Clock and delay constraints can be specified with an SDC File.
 ● Outputs:
-- .net file: The circuit .net file is an xml file that describes a post-packed user circuit. It represents the user netlist in terms of the complex logic blocks of the target architecture. This file is generated from the packing stage and used as input to the placement stage in VPR.
+   - .net file: The circuit .net file is an xml file that describes a post-packed user circuit. It represents the user netlist in terms of the complex logic blocks of the target architecture. This file is generated from the packing stage and used as input to the placement stage in VPR.
 ![](fpgaday2/fpgaday2vprcommand.png)
 ![](fpgaday2/fpgaday2vprdisplay.png)
 ![](fpgaday2/fpgaday2vprblockselected.png)
