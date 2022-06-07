@@ -111,9 +111,9 @@ Different ways of programming
 OpenFPGA
 
 - To improve the design and development times of current methodologies to produce an FPGA which involve several hardware and software engineers and development for several months. OpenFPGA an Open source framework can be used to quickly generate a fabric for a custom FPGA (specific to your design).
-   – Automation techniques used
-   – Reduces FPGA development cycle of a new FPGA to a few days
-   – Provides open source design tools
+  – Automation techniques used
+  – Reduces FPGA development cycle of a new FPGA to a few days
+  – Provides open source design tools
 
 - Need for custom FPGAs?
    – Accelerate domain-specific applications: FPGA architectures have to be custom made, to provide maximum computing. Prototyping and producing a custom FPGA is costly and time-consuming.
