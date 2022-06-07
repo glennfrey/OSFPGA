@@ -141,10 +141,12 @@ Running the tool
    
 ● Input files are Blif file and Earch.xml
 
-```$VTR_ROOT/vpr/vpr \
+```
+$VTR_ROOT/vpr/vpr \
 > $VTR_ROOT/vtr_flow/arch/timing/EArch.xml \
 > $VTR_ROOT/vtr_flow/benchmarks/blif/tseng.blif \ 
-> --route_chan_width 100```
+> --route_chan_width 100
+```
 
 Run VPR on a Pre-Synthesized Circuit
 
