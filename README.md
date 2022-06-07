@@ -46,25 +46,25 @@ History of programmable logic
 - Study the effect of area, speed, power of the digital circuits
 
 
-- What is an FPGA?
+What is an FPGA?
 * A “field programmable” gate array: Integrated circuit designed to be configured by a designer. FPGA configuration is specified using HDL similar to an ASIC (application specific Integrated circuit). Logic design in FPGA is different it uses LUTs, Flip-flops, configurable logic blocks.
 
-- ASIC vs FPGA
-* ASIC(Application Specific Integrated Circuit) is designed from RTL to layout. Layout must be sent to semiconductor foundary for fabrication. ASIC cannot be reprogrammed.
-* FPGA (Field Programmable Gate Array) is designed from RTL to bitstream. Design programmed on the FPGA which is bought off-the-shelf. FPGA can be re-programmed.
+ASIC vs FPGA
+- ASIC(Application Specific Integrated Circuit) is designed from RTL to layout. Layout must be sent to semiconductor foundary for fabrication. ASIC cannot be reprogrammed.
+- FPGA (Field Programmable Gate Array) is designed from RTL to bitstream. Design programmed on the FPGA which is bought off-the-shelf. FPGA can be re-programmed.
 
-● Applications
-- Hardware acceleration
-- Signal processing
-- Device controllers
-- Embedded systems
-- Aerospace
-- High performance computing
-- Machine learning
+- Applications
+   - Hardware acceleration
+   - Signal processing
+   - Device controllers
+   - Embedded systems
+   - Aerospace
+   - High performance computing
+   - Machine learning
 
 ● FPGA Architecture
 - Configurable logic blocks (CLB)-- Implement combinatorial and sequential logic. Based on LUT and Flip-flop/latches
-- Look-up Tables (LUT) which implement the logic functions using truth table
+- Look-up Tables (LUT) which implement the logic functions using truth table
 - Carry and Control Logic- Implements arithmetic operations
 - Flip Flops (FFs)/ Latches
 - Memory Elements
