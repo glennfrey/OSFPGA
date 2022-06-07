@@ -111,9 +111,9 @@ Different ways of programming
 OpenFPGA
 
 - To improve the design and development times of current methodologies to produce an FPGA which involve several hardware and software engineers and development for several months. OpenFPGA an Open source framework can be used to quickly generate a fabric for a custom FPGA (specific to your design).
-  – Automation techniques used
-  – Reduces FPGA development cycle of a new FPGA to a few days
-  – Provides open source design tools
+    – Automation techniques used
+    – Reduces FPGA development cycle of a new FPGA to a few days
+    – Provides open source design tools
 
 - Need for custom FPGAs?
    – Accelerate domain-specific applications: FPGA architectures have to be custom made, to provide maximum computing. Prototyping and producing a custom FPGA is costly and time-consuming.
@@ -128,9 +128,9 @@ Running the tool
 - In this workshop we don't have to Build OpenFPGA as it is done on cloud as well as build VTR.
 - we can run VPR on a Pre-Synthesized Circuit and observe the result files then visualize (GUI) circuit implementation.
 - Run the entire VTR flow automatically
-   – Implement our own circuit in this workshop(counter.v) on a pre-existing FPGA architecture Earch.xml which can be found in $VTR_ROOT/vtr_flow/arch.
-   – Use an automated approach (Odin II and ABC are automatically run) using python script
-   – Perform timing simulation on the generated fabric
+    – Implement our own circuit in this workshop(counter.v) on a pre-existing FPGA architecture Earch.xml which can be found in $VTR_ROOT/vtr_flow/arch.
+    – Use an automated approach (Odin II and ABC are automatically run) using python script
+    – Perform timing simulation on the generated fabric
 
 ## Part 2: VPR
 - To run VPR on a Pre-Synthesized Circuit you can check this link for more detailed information https://docs.verilogtorouting.org/en/latest/vpr/
@@ -141,8 +141,8 @@ Running the tool
 ● Input files are Blif file and Earch.xml
 ``$VTR_ROOT/vpr/vpr \
 > $VTR_ROOT/vtr_flow/arch/timing/EArch.xml \
-> $VTR_ROOT/vtr_flow/benchmarks/blif/tseng.blif \ --
-> route_chan_width 100``
+> $VTR_ROOT/vtr_flow/benchmarks/blif/tseng.blif \ 
+> --route_chan_width 100``
 Run VPR on a Pre-Synthesized Circuit
 ● BLIF Netlist (.blif) - The technology mapped circuit to be implement on the target FPGA is specified as a Berkely Logic Interchange Format (BLIF) netlist. The netlist must be flattened and consist of only primitives (e.g. .names, .latch, .subckt). Clock and delay constraints can be specified with an SDC File.
 ● Outputs:
