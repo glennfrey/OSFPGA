@@ -134,20 +134,22 @@ Running the tool
 
 ## Part 2: VPR
 - To run VPR on a Pre-Synthesized Circuit you can check this link for more detailed information https://docs.verilogtorouting.org/en/latest/vpr/
-   – Packing (combines primitives into complex blocks)
-   – Placement (places complex blocks within the FPGA grid)
-   – Routing (determines interconnections between blocks)
-   – Analysis (analyzes the implementation)
+   * Packing (combines primitives into complex blocks)
+   * Placement (places complex blocks within the FPGA grid)
+   * Routing (determines interconnections between blocks)
+   * Analysis (analyzes the implementation)
+   
 ● Input files are Blif file and Earch.xml
 
-``$VTR_ROOT/vpr/vpr \
+```$VTR_ROOT/vpr/vpr \
 > $VTR_ROOT/vtr_flow/arch/timing/EArch.xml \
 > $VTR_ROOT/vtr_flow/benchmarks/blif/tseng.blif \ 
-> --route_chan_width 100``
+> --route_chan_width 100```
 
 Run VPR on a Pre-Synthesized Circuit
-● BLIF Netlist (.blif) - The technology mapped circuit to be implement on the target FPGA is specified as a Berkely Logic Interchange Format (BLIF) netlist. The netlist must be flattened and consist of only primitives (e.g. .names, .latch, .subckt). Clock and delay constraints can be specified with an SDC File.
-● Outputs:
+
+- BLIF Netlist (.blif) - The technology mapped circuit to be implement on the target FPGA is specified as a Berkely Logic Interchange Format (BLIF) netlist. The netlist must be flattened and consist of only primitives (e.g. .names, .latch, .subckt). Clock and delay constraints can be specified with an SDC File.
+- Outputs:
    - .net file: The circuit .net file is an xml file that describes a post-packed user circuit. It represents the user netlist in terms of the complex logic blocks of the target architecture. This file is generated from the packing stage and used as input to the placement stage in VPR.
 ![](fpgaday2/fpgaday2vprcommand.png)
 ![](fpgaday2/fpgaday2vprdisplay.png)
