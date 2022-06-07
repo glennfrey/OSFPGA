@@ -97,8 +97,8 @@ FPGA Architecture
 ## VIO Counter
 
 Different ways of programming
-● Local programing on the Basys3 board
-● Remote programing
+- Local programing on the Basys3 board
+- Remote programing
    – Inputs through Virtual Input/Output and Outputs observed on the board
    – Inputs through Virtual Input/Output and Outputs observed on the Integrated Logic Analyzer (ILA)
 ![](fpgaday1/fpgaday1ipcatalogvio.png)
