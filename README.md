@@ -171,22 +171,40 @@ Run VPR on a Pre-Synthesized Circuit
 - BLIF Netlist (.blif) - The technology mapped circuit to be implement on the target FPGA is specified as a Berkely Logic Interchange Format (BLIF) netlist. The netlist must be flattened and consist of only primitives (e.g. .names, .latch, .subckt). Clock and delay constraints can be specified with an SDC File.
 - Outputs:
    - .net file: The circuit .net file is an xml file that describes a post-packed user circuit. It represents the user netlist in terms of the complex logic blocks of the target architecture. This file is generated from the packing stage and used as input to the placement stage in VPR.
+
+By running the command these information shown will be generated and along with it is a display window.
 ![](fpgaday2/fpgaday2vprcommand.png)
+Display window of VPR.
 ![](fpgaday2/fpgaday2vprdisplay.png)
+You can select blocks and you will see color of the blocks changes in relation to the one you selected.
 ![](fpgaday2/fpgaday2vprblockselected.png)
+Here I selected nets in toggle nets option.
 ![](fpgaday2/fpgaday2vprtogglenetsnets.png)
+Here I selected logical nets in toggle nets option.
 ![](fpgaday2/fpgaday2vprtogglenetslogicalconnections.png)
+You can click proceed and the corresponding terminal prompt will also output stage. Here it says 'completed placement consistency check successfully.
 ![](fpgaday2/fpgaday2vprproceedplacement.png)
+Here I click proceed to proceed to placement display.
 ![](fpgaday2/fpgaday2vprproceedplacementdisplay.png)
+As you see the right pane buttons changes to many options. It also display routing.
 ![](fpgaday2/fpgaday2vprproceedroutingdisplay.png)
+Here I change the option of toggle congestion as shown.
 ![](fpgaday2/fpgaday2vprproceedroutingdisplayrrcongested.png)
+Here I change the critical path option as shown.
 ![](fpgaday2/fpgaday2vprproceedroutingdisplaycritpath.png)
+Here I use the routing utility option the display route utilization in each path.
 ![](fpgaday2/fpgaday2vprproceedroutingdisplayroutingutil.png)
+Here I change the block internal.
 ![](fpgaday2/fpgaday2vprproceedroutingdisplayblkinternal.png)
+These are the files that are generated after completing the command vpr. As shown it output .net file, .place file, .route file and net.post_routing file.
 ![](fpgaday2/fpgaday2vprproceedroutingdisplaynetpackplacegenerated.png)
+It also output the following report below.
 ![](fpgaday2/fpgaday2vprreport.png)
+For the no constraint file we had a slack violation as shown.
 ![](fpgaday2/fpgaday2vprslackreportnoconstraint.png)
+Here I try to create a constraint file with a period of 5ns.
 ![](fpgaday2/fpgaday2vprslackreportcosntraintfle.png)
+Running the VPR command again I got pass the slack violation as shown.
 ![](fpgaday2/fpgaday2vprslackreportcosntraint.png)
 ## Part 3: VTR
 VTR
