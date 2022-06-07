@@ -5,10 +5,8 @@ FPGA - Fabric, Design and Architecture
 ### ABOUT THE WORKSHOP
 The Workshop is a 5-day basic to advance program that is design for fresher and professional who wants to build a career in VLSI industry. It is a cloud based workshop that comprises of training courses that covers intro to FPGA, OpenFPGA, RISC-V core programming in Vivado, intro to SOFA FPGA Fabric IP and RISC-V core on custom SOFA fabric.
 ### AUTHOR OF THE WORKSHOP
-#### Mr. Kunal Ghosh
-Co-founder of VLSI System Design (VSD) Corporation Private Limited
-#### Professor Nanditha Rao
-#### 
+#### Mr. Kunal Ghosh - Co-founder of VLSI System Design (VSD) Corporation Private Limited
+#### Professor Nanditha Rao - Assistant Professor in VLSI System group at IIT Bangalore
 ### AGENDA
  [Day 1 Intro](#Day1-Intro)
   * [Part 1: FPGA introduction](#Part1-FPGA-introduction)
@@ -73,26 +71,43 @@ FPGA Architecture
 - Programmable interconnect- Wires to connect inputs, CLBs
 
 ## Vivado counter
+In day 1 lab we have to implement a counter in BASYS3 using Vivado. I open vivado using command prompt by command ```vivado```.
 ![](fpgaday1/fpgaday1.png)
+I then click the create project button on the left.
 ![](fpgaday1/fpgaday1createproj.png)
+I specify the project as RTL project and the move to specifying the FPGA board I will be using. In this case the BASYS3 a general purpose FPGA of ARTIX-7 family, package cpg236 and Speed of -1. Then I selected the one with 41600 flip flops.
 ![](fpgaday1/fpgaday1boardparts.png)
+I then import the counter_clk_div.v as design source as shown.
 ![](fpgaday1/fpgaday1addcounterdesign.png)
+I also import the test_counter.v as simulation source as shown.
 ![](fpgaday1/fpgaday1addtestbench.png)
+I ran the simulation. As shown the 4 bit counter comes back to 0 after F which is equivalent to 15 in decimal form.
 ![](fpgaday1/fpgaday1countersimulation.png)
+I then open elaborated design upon completion I open the schematic window. Here the RTL block are shown.
 ![](fpgaday1/fpgaday1counterselaboration.png)
+Here I open the IO port window and assgn IO pins to each signal as shown below. I also assign each pin with 3.3Vcc.
 ![](fpgaday1/fpgaday1counterselaborationioplanning.png)
+I then save the sdc file.
 ![](fpgaday1/fpgaday1counterselaborationconstraints.png)
-![](fpgaday1/fpgaday1counterssynthesistimingreport.png)
+I did a few changes in the IO ports as I have forgotten to assign one pin with 3.3Vcc. I then save the sdc file once again and run synthesis. After running Synthesis I run timing reports and I got these results as shown below.
 ![](fpgaday1/fpgaday1counterssynthesistsolved.png)
+The result are as expected as we have not indicate the clock speed of our system. So here I open the constraints wizard under Open Synthesis Design. I popup window opens and I then change the speed to 100 Mhz.
 ![](fpgaday1/fpgaday1counterssynthesiswizardconstraint.png)
+I skip the other page as we only need the clock to configure. I then receive a constraint summary as shown below.
 ![](fpgaday1/fpgaday1counterssynthesisconstraintsummary.png)
+Here I rerun synthesis and got a positive values for setup and hold. Meaning no timing violations.
 ![](fpgaday1/fpgaday1counterssynthesispositiveslack.png)
+We can also see the synthesize schematic as shown below by pressing the schematic button underneath Open Synthesize Design button.
 ![](fpgaday1/fpgaday1counterssynthesisschematic.png)
-![](fpgaday1/fpgaday1implementation.png)
+This is the report utilization as shown.
 ![](fpgaday1/fpgaday1implementationutilization.png)
+Here is a graphical report of utilization by clicking the summary option in its window.
 ![](fpgaday1/fpgaday1implementationutilization2.png)
+Here I run a timing report summary in post implementation. This is more accurate than the one in synthesis timing report summary.
 ![](fpgaday1/fpgaday1implementatiocomplete.png)
+I then press write bitstream to generate bitstream to program the BASYS3 board.
 ![](fpgaday1/fpgaday1writebitstreamcomplete.png)
+Since I do not have a board on my end. I try the cloud if there is a board connected by pressing auto connect. Unfortunately there are none.
 ![](fpgaday1/fpgaday1openhardwaremngrautoconnect.png)
 
 ## VIO Counter
@@ -103,9 +118,11 @@ Different ways of programming
    * Inputs through Virtual Input/Output and Outputs observed on the board
    * Inputs through Virtual Input/Output and Outputs observed on the Integrated Logic Analyzer (ILA)
 ![](fpgaday1/fpgaday1ipcatalogvio.png)
+Here we are gonna do remote programming using VIO IP. We first generate VIO IP by pressinng the IP catalog and indicate the required parameters.
 ![](fpgaday1/fpgaday1vioioplanning.png)
+Here I assign the clock signal in io ports of W5 pin of BASYS3 FPGA Board with 3.3Vcc.
 ![](fpgaday1/fpgaday1viobitstream.png)
-
+I then press write bitstream to program the board.
 ## Day OpenFPGA2
 ## Part 1: OpenFPGA Intro
 
