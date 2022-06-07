@@ -39,15 +39,15 @@ Co-founder of VLSI System Design (VSD) Corporation Private Limited
 ## FPGA introduction
 History of programmable logic
 - Programmable logic devices:
-* PLA – Programmable logic arrays
-* CPLD – Complex programmable logic device
-* FPGA
+   * PLA – Programmable logic arrays
+   * CPLD – Complex programmable logic device
+   * FPGA
 - Generate customisable hardware
 - Study the effect of area, speed, power of the digital circuits
+
+
 - What is an FPGA?
-* A “field programmable” gate array: Integrated circuit designed to be configured by a designer.
-* FPGA configuration is specified using HDL similar to an ASIC (application specific Integrated circuit)
-* Logic design in FPGA is different it uses LUTs, Flip-flops, configurable logic blocks.
+* A “field programmable” gate array: Integrated circuit designed to be configured by a designer. FPGA configuration is specified using HDL similar to an ASIC (application specific Integrated circuit). Logic design in FPGA is different it uses LUTs, Flip-flops, configurable logic blocks.
 
 - ASIC vs FPGA
 * ASIC(Application Specific Integrated Circuit) is designed from RTL to layout. Layout must be sent to semiconductor foundary for fabrication. ASIC cannot be reprogrammed.
